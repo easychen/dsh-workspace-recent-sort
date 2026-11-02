@@ -1,7 +1,7 @@
 {
   "name": "dsh-workspace-recent-sort",
-  "version": "0.2.0",
-  "description": "DeepSeek Harness sidebar plugin: order Workspace groups by their latest conversation, show compact conversations with a hover reveal, and scroll the selected conversation back into view after a reorder.",
+  "version": "0.2.1",
+  "description": "DeepSeek Harness sidebar plugin: order Workspace groups by their latest conversation, show compact conversations with a hover reveal, keep running/waiting sessions visible, and scroll to the selected session.",
   "author": "easychen",
   "license": "MIT",
   "type": "module",

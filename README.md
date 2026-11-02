@@ -54,14 +54,18 @@ projection while, and only while, both of these are selected:
 ### Compact conversations
 
 - In **Group by → WorkSpace**, an expanded Workspace shows only its newest
-  conversation row by default.
+  conversation row by default, plus any row that must stay actionable.
 - Hovering the Workspace header or its visible row animates the next three
   conversations into view (the newest conversation plus three more; a
   provisional New Session row stays visible when present). Moving away collapses
   them again.
 - The currently selected conversation stays visible even when it is not the
-  newest one, and the **展开其余 xx 个会话 / Show remaining … conversations**
-  button stays hidden until the Workspace is hovered or keyboard-focused.
+  newest one.
+- Rows with a running turn, a running subagent child, or a pending interaction
+  (approval / plan review / question) are never hidden by compact mode, even
+  when several of them run at once.
+- The **展开其余 xx 个会话 / Show remaining … conversations** button stays
+  hidden until the Workspace is hovered or keyboard-focused.
 - Keyboard focus inside a Workspace expands all of its rendered rows. Clicking
   **展开其余 xx 个会话 / Show remaining … conversations** raises the native
   watermark for that Workspace; once more than six rows are rendered, hovering

@@ -12,7 +12,13 @@ globalThis.window = {
 };
 await import("../lib/client.js");
 const plugin = definition.factory(() => ({}));
-const { latestConversationAt, sortWorkspaceItems, isWorkspaceBrowser, normalizeSettings } = plugin.__test;
+const {
+	latestConversationAt,
+	sortWorkspaceItems,
+	isWorkspaceBrowser,
+	normalizeSettings,
+	collectActiveSessionIds
+} = plugin.__test;
 
 /** Build one Workspace entity with member Session ids. */
 function workspace(id, sessionIds) {
@@ -103,4 +109,33 @@ test("defaults both feature switches to on", () => {
 		recentSort: false,
 		compact: true
 	});
+});
+
+test("keeps running, waiting, and running-child rows visible", () => {
+	const sessions = {
+		byId: {
+			"s-run": { running: true },
+			"s-idle": { running: false },
+			"s-pending": { running: false },
+			"s-parent": { running: false }
+		},
+		projectionsBySession: {
+			"s-parent": { values: { subagentCatalog: [{ id: "s-child" }] } }
+		}
+	};
+	const statuses = new Map([
+		["s-pending", { running: false, pendingInteraction: { kind: "approval" } }],
+		["s-child", { running: true }]
+	]);
+	assert.deepEqual([...collectActiveSessionIds(sessions, statuses)].sort(), [
+		"s-parent",
+		"s-pending",
+		"s-run"
+	]);
+});
+
+test("active-row detection tolerates missing status and list data", () => {
+	assert.equal(collectActiveSessionIds(undefined, undefined).size, 0);
+	assert.equal(collectActiveSessionIds({ byId: {} }, undefined).size, 0);
+	assert.deepEqual([...collectActiveSessionIds({ byId: { "s-run": { running: true } } }, undefined)], ["s-run"]);
 });
