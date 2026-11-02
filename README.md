@@ -1,7 +1,10 @@
 # dsh-workspace-recent-sort
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](./package.json)
+[![npm version](https://img.shields.io/npm/v/dsh-workspace-recent-sort.svg)](https://www.npmjs.com/package/dsh-workspace-recent-sort)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-workspace-recent-sort.svg)](https://www.npmjs.com/package/dsh-workspace-recent-sort)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/easychen/dsh-workspace-recent-sort/blob/main/LICENSE)
 
+npm: <https://www.npmjs.com/package/dsh-workspace-recent-sort>  
 Repository: <https://github.com/easychen/dsh-workspace-recent-sort>
 
 DeepSeek Harness sidebar plugin with three related behaviors:
@@ -95,7 +98,13 @@ apply immediately without a reload.
 
 ## Install
 
-Install the bundle from GitHub into the Web profile:
+Install the published bundle from npm into the Web profile:
+
+```sh
+dsh plugin --profile web add dsh-workspace-recent-sort
+```
+
+Or install directly from GitHub:
 
 ```sh
 dsh plugin --profile web add https://github.com/easychen/dsh-workspace-recent-sort.git
@@ -143,3 +152,5 @@ npm pack --dry-run
 
 The browser bundle is hand-written against the DSH module loader, so no build
 step is required.
+
+Maintainers: see [PUBLISHING.md](./PUBLISHING.md) for the npm release checklist.

@@ -2,7 +2,10 @@
   "name": "dsh-workspace-recent-sort",
   "version": "0.2.1",
   "description": "DeepSeek Harness sidebar plugin: order Workspace groups by their latest conversation, show compact conversations with a hover reveal, keep running/waiting sessions visible, and scroll to the selected session.",
-  "author": "easychen",
+  "author": {
+    "name": "easychen",
+    "url": "https://github.com/easychen"
+  },
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
@@ -29,7 +32,9 @@
     "deepseek-harness",
     "workspace",
     "sidebar",
-    "sort"
+    "sort",
+    "recent",
+    "compact"
   ],
   "repository": {
     "type": "git",
@@ -38,6 +43,14 @@
   "homepage": "https://github.com/easychen/dsh-workspace-recent-sort#readme",
   "bugs": {
     "url": "https://github.com/easychen/dsh-workspace-recent-sort/issues"
+  },
+  "scripts": {
+    "test": "node --test test/sort.test.mjs",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "npm test"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dsh": {
     "bundle": {
