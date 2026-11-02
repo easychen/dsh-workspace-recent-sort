@@ -1,0 +1,6 @@
+# dsh-workspace-recent-sort bundle patch: the profile's bundle selection loads
+# this layer, which mounts the one dual-face plugin row. The host half is a
+# no-op; the browser half wraps the sidebar's WorkspaceBrowser registration.
+- insert:
+    - id: workspace-recent-sort
+      name: dsh-workspace-recent-sort

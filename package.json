@@ -1,0 +1,53 @@
+{
+  "name": "dsh-workspace-recent-sort",
+  "version": "0.2.0",
+  "description": "DeepSeek Harness sidebar plugin: order Workspace groups by their latest conversation, show compact conversations with a hover reveal, and scroll the selected conversation back into view after a reorder.",
+  "author": "easychen",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-0"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "workspace",
+    "sidebar",
+    "sort"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easychen/dsh-workspace-recent-sort.git"
+  },
+  "homepage": "https://github.com/easychen/dsh-workspace-recent-sort#readme",
+  "bugs": {
+    "url": "https://github.com/easychen/dsh-workspace-recent-sort/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  }
+}
