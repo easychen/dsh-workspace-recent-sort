@@ -94,7 +94,7 @@ apply immediately without a reload.
 Install the bundle from GitHub into the Web profile:
 
 ```sh
-dsh plugin --profile web add github:easychen/dsh-workspace-recent-sort
+dsh plugin --profile web add https://github.com/easychen/dsh-workspace-recent-sort.git
 ```
 
 The package declares `dsh.bundle.patch`, so it installs as an active profile
