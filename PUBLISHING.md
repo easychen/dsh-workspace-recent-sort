@@ -8,6 +8,7 @@ Maintainer checklist for `dsh-workspace-recent-sort`.
 |---|---|
 | Package | `dsh-workspace-recent-sort` |
 | Version | `0.2.1` |
+| Published | 2026-11-02 (npm `latest`) |
 | Registry | <https://registry.npmjs.org/> |
 | Access | public (unscoped package) |
 | Tarball contents | `lib/index.js`, `lib/client.js`, `cordis.patch.yml`, `README.md`, `LICENSE`, `package.json` |
@@ -54,12 +55,16 @@ Optional, but recommended: run the real publish path without publishing.
 npm publish --dry-run --access public
 ```
 
-Before the first publish, the name must be free:
+The name is registered now:
 
 ```sh
 npm view dsh-workspace-recent-sort version
-# npm error code E404 means the name is available.
+# 0.2.1
+npm view dsh-workspace-recent-sort@0.2.1 gitHead
+# 1da287ecb9db72baecfdbe9672f0fe0932da0b9b
 ```
+
+A 404 here means the registry or package name is wrong.
 
 ## 3. Publish
 
@@ -108,7 +113,26 @@ npm install dsh-workspace-recent-sort
 find node_modules/dsh-workspace-recent-sort -maxdepth 2 -type f
 ```
 
-## 5. Versioning and Git tags
+## 5. Registry cleanup (optional)
+
+The first publish also left a staging artifact:
+
+```sh
+npm view dsh-workspace-recent-sort versions
+# [ '0.0.0-stage', '0.2.1' ]
+```
+
+It is not `latest`, so normal installs never see it. Deprecate it, or unpublish
+it within npm's 72-hour window and while nothing depends on it:
+
+```sh
+npm deprecate dsh-workspace-recent-sort@0.0.0-stage "Staging artifact; use 0.2.1 or later."
+
+# Destructive; only if the staging artifact should disappear entirely:
+npm unpublish dsh-workspace-recent-sort@0.0.0-stage
+```
+
+## 6. Versioning and Git tags
 
 `package.json` currently reports `0.2.1`, matching the existing GitHub tag
 `v0.2.1`. If the npm release includes only README/package metadata changes
